@@ -20,9 +20,9 @@ z0 = 0
 # Calculation is done by splitting the arm into 2 parts'
 # End effector positions in 3D space and the two links
 
-y_end = -400
-x_end = 800
-z_end = -100
+x_end = 1000
+y_end = 100
+z_end = 200
 
 # Calculating the points for the graph
 y5 = y_end
@@ -38,9 +38,11 @@ x2 = x3
 y2 = y3 + a4
 z2 = z3
 
-if y2 >= 0:
+
+# Case1: When y is +ve
+if (y2 >= 0):
     theta1 = math.atan2(y2, x2)                                 # Rotation angle of the base
-    r1 = math.hypot(2, y2)
+    r1 = math.hypot(x2, y2)
     r2 = z2 - a1
     alpha2 = math.atan2(r2, r1)
     r3 = math.hypot(r1, r2)
@@ -54,10 +56,11 @@ if y2 >= 0:
     theta5 = math.pi/2 + theta1
 
     angles = np.rad2deg([theta1, theta2_eff, theta3, theta4, theta5])
+
 else:
     y2 = abs(y2)
     theta1 = math.atan2(y2, x2)  # Rotation angle of the base
-    r1 = math.hypot(2, y2)
+    r1 = math.hypot(x2, y2)
     r2 = z2 - a1
     alpha2 = math.atan2(r2, r1)
     r3 = math.hypot(r1, r2)
@@ -72,7 +75,6 @@ else:
     theta1 = theta1 * (-1)
     y2 = y2*(-1)
 
-
     angles = np.rad2deg([theta1, theta2_eff, theta3, theta4, theta5])
 
 
@@ -81,12 +83,12 @@ a2_t = a2*math.cos(theta1)
 r1_t = r1*math.cos(theta1)
 p_x1 = a2*(math.cos(theta2+alpha1+alpha1))
 p_y1 = p_x1*(math.sin(theta1))
-p_z1 = a2*(math.sin(theta2+alpha1+alpha1))
+p_z1 = abs(a2*(math.sin(theta2+alpha1+alpha1)))
 p_x2 = x2
 p_y2 = y2
-p_z2 = z2
+p_z2 = abs(z2)
 
-print(theta1, theta2, theta3, theta4, theta5)
+print(theta1, theta2, theta3, theta4, theta5, alpha1, alpha2)
 print(angles)
 
 fig = plt.figure()
