@@ -1,20 +1,20 @@
-import ikpy
 import numpy as np
 from ikpy.link import OriginLink, URDFLink
 from ikpy.chain import Chain
+from ikpy.utils import plot
 
 
 left_arm_chain = Chain(name='left_arm', links=[
     OriginLink(),
      URDFLink(
       name="base_rotation",
-      translation_vector=[0, 0, 0],
+      translation_vector=[0, 0, 0.1],
       orientation=[0, 0, 0],
       rotation=[0, 0, 1],
     ),
     URDFLink(
       name="linear1_joint",
-      translation_vector=[0, 0, 0],
+      translation_vector=[0.001, 0, 0],
       orientation=[0, 0, 0],
       rotation=[0, 1, 0],
     ),
@@ -48,20 +48,13 @@ left_arm_chain = Chain(name='left_arm', links=[
       orientation=[1, 0, 0],
       rotation=[1,0,0]
     ),
-   
-  
   
 ])
-
-
-
-from ikpy.utils import plot
-from mpl_toolkits.mplot3d import Axes3D
 
 fig, ax = plot.init_3d_figure()
 left_arm_chain.plot([0] * (len(left_arm_chain)),ax)
 
-target_position = [0.3,-0.2,0.1]
+target_position = [0.5, -0.2, 0.3]
 target_orientation = np.eye(3)
 #orientation_mode = "X"
 ik = left_arm_chain.inverse_kinematics(target_position)
