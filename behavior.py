@@ -20,9 +20,9 @@ z0 = 0
 # Calculation is done by splitting the arm into 2 parts'
 # End effector positions in 3D space and the two links
 
-x_end = 1000
+x_end = 600
 y_end = 100
-z_end = 200
+z_end = 0
 
 # Calculating the points for the graph
 y5 = y_end
@@ -81,7 +81,7 @@ else:
 # To plot the graphs
 a2_t = a2*math.cos(theta1)
 r1_t = r1*math.cos(theta1)
-p_x1 = a2*(math.cos(theta2+alpha1+alpha1))
+p_x1 = a2_t*(math.cos(theta2+alpha1+alpha1))
 p_y1 = p_x1*(math.sin(theta1))
 p_z1 = abs(a2*(math.sin(theta2+alpha1+alpha1)))
 p_x2 = x2
