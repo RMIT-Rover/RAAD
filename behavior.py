@@ -5,12 +5,12 @@ from matplotlib.widgets import Slider, Button
 import numpy as np
 
 # Define the lengths of all the links
-a1 = 0                         # Height of the base
-a2 = 530                       # Length of link1
+a1 = 64                       # Height of the base
+a2 = 531.19                       # Length of link1
 a3 = 510
-a4 = 100
-a5 = 100
-a6 = 217
+a4 = 104
+a5 = 101
+a6 = 213
 
 # Base point of the link
 x0 = 0
@@ -20,9 +20,9 @@ z0 = 0
 # Calculation is done by splitting the arm into 2 parts'
 # End effector positions in 3D space and the two links
 
-x_end = 600
-y_end = 100
-z_end = 0
+x_end = 717-72
+y_end = -104
+z_end = -81
 
 # Calculating the points for the graph
 y5 = y_end

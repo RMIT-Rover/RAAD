@@ -1,5 +1,6 @@
 import math
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 import numpy as np
 
 # Define the lengths of all the links
@@ -15,11 +16,23 @@ x0 = 0
 y0 = 0
 z0 = 0
 
+# Limit of the end effector
+x_limit =
+
 # Calculation is done by splitting the arm into 2 parts'
 # End effector positions in 3D space and the two links
 
+def arm_limit (x_end, y_end, z_end):
+    if (x_end > x_limit):
+        # raise ValueError("X position reached maximum")
+        x_end = x_limit
+        ik = ik_angles(x_end, y_end, z_end)
+        print(ik)
+    else :
+        ik = ik_angles(x_end, y_end, z_end)
+    return (x_end, y_end, z_end)
 
-# Calculating the points for the graph
+# Calculating the inverse kinematics for the arm
 def ik_angles(x_end, y_end, z_end):
     y5 = y_end
     x5 = x_end
@@ -86,7 +99,9 @@ def ik_angles(x_end, y_end, z_end):
     print(angles)
     print(x5, y5, z5)
 
-    ''' fig = plt.figure()
+    return angles
+
+    '''fig = plt.figure()
     ax = plt.axes(projection='3d')
 
     forward = [x0, p_x1, p_x2, x3, x4, x5]
@@ -99,4 +114,4 @@ def ik_angles(x_end, y_end, z_end):
     ax.set_zlim3d(-500, 500)
     plt.show()'''
 
-    return angles
+
